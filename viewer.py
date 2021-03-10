@@ -71,7 +71,7 @@ if __name__ == '__main__':
         'point_colors': np.array(colors)
     }
     bboxes = np.array(bboxes)
-    print('Automatic number of cells detected with automatic method: ', len(points))
+    print('Number of cells detected with automatic method: ', len(points))
 
     with napari.gui_qt():
         viewer = napari.view_image(img, name='image')
