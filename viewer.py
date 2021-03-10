@@ -86,6 +86,10 @@ if __name__ == '__main__':
                                         edge_color='magenta',
                                         name='bounding box',
                                         edge_width=5)
-        
+
         # properties=properties, text=text_parameters,
-        print('Number of cells after manual correction: ',len(points))
+
+        @viewer.bind_key('c')
+        def print_names(viewer):
+            num_cells = viewer.layers['points'].data.shape[0]
+            print('Number of cells after manual correction: ', num_cells)
