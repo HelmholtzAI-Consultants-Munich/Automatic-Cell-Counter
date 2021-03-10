@@ -13,7 +13,6 @@ from skimage.morphology import disk, opening, remove_small_objects
 def get_args():
     parser = argparse.ArgumentParser(description='Bone Cement Planning Pipeline')
     parser.add_argument('--image', default=False)
-    parser.add_argument('--save', default=False)
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -72,22 +71,20 @@ if __name__ == '__main__':
         'point_colors': np.array(colors)
     }
     bboxes = np.array(bboxes)
-    print('Automatic number of cells detected with automatic method: ',len(points) )
-    with napari.gui_qt():
+    print('Automatic number of cells detected with automatic method: ', len(points))
 
+    with napari.gui_qt():
         viewer = napari.view_image(img, name='image')
+        shapes_layer = viewer.add_shapes(bboxes,
+                                face_color='transparent',
+                                edge_color='magenta',
+                                name='bounding box',
+                                edge_width=5) # properties=properties, text=text_parameters,
         points_layer = viewer.add_points(points,
                                 properties=point_properties,
                                 face_color='point_colors',
                                 size=20,
                                 name='points') # face_colormap='plasma', can add good point anf confidence 
-        shapes_layer = viewer.add_shapes(bboxes,
-                                        face_color='transparent',
-                                        edge_color='magenta',
-                                        name='bounding box',
-                                        edge_width=5)
-
-        # properties=properties, text=text_parameters,
 
         @viewer.bind_key('c')
         def print_names(viewer):
