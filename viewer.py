@@ -12,11 +12,19 @@ from skimage.morphology import disk, opening, remove_small_objects
 from skimage.segmentation import watershed
 from skimage.feature import peak_local_max
 
+def str_to_bool(value):
+    if isinstance(value, bool):
+        return value
+    if value.lower() in {'false', 'f', '0', 'no', 'n'}:
+        return False
+    elif value.lower() in {'true', 't', '1', 'yes', 'y'}:
+        return True
+    raise ValueError(f'{value} is not a valid boolean value')
 
 def get_args():
     parser = argparse.ArgumentParser(description='Automatic cell counter')
     parser.add_argument('--image', default=False)
-    parser.add_argument('--dense', default=True)
+    parser.add_argument('--dense', type=str_to_bool,default=True)
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -41,14 +49,15 @@ if __name__ == '__main__':
     #plt.imshow(eroded)
 
     #plot
-    labels = label(eroded)
+    final = label(eroded)
     area = []
-    for region in regionprops(labels):
+    for region in regionprops(final):
         area.append(region.area)
     mid = np.median(np.array(area))
     
     # only use watershed algorithm when the input image is not quite dense
-    if dense:
+    if dense==True:
+        print('Use watershed algorithm for dense images')
         distance = ndi.distance_transform_edt(eroded)
         local_max_coords = peak_local_max(distance, min_distance=40,exclude_border=0)
         local_max_mask = np.zeros(distance.shape, dtype=bool)
@@ -58,10 +67,8 @@ if __name__ == '__main__':
 
         #only do watershed on large size cells
         large = remove_small_objects(eroded.astype(bool), 2*mid).astype(np.int64)
-        final = label(eroded)
         final[large>0] = labels[large>0]
-        final = label(final)
-        final = remove_small_objects(final, 1000).astype(np.int64)
+        final = remove_small_objects(label(final), 1000).astype(np.int64)
 
 
     points = [] 
