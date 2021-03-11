@@ -9,14 +9,19 @@ from skimage.filters import threshold_li
 from skimage.measure import label, regionprops
 from skimage.color import label2rgb
 from skimage.morphology import disk, opening, remove_small_objects
+from skimage.segmentation import watershed
+from skimage.feature import peak_local_max
+
 
 def get_args():
-    parser = argparse.ArgumentParser(description='Bone Cement Planning Pipeline')
+    parser = argparse.ArgumentParser(description='Automatic cell counter')
     parser.add_argument('--image', default=False)
+    parser.add_argument('--dense', default=True)
     return parser.parse_args()
 
 if __name__ == '__main__':
     args = get_args()
+    dense = args.dense
 
     img = plt.imread(args.image)  #clear: Boyden Chamber/CD345_LN229_Ctrl/8.tif
     r = img[:,:,0].astype(np.int32)
@@ -26,11 +31,8 @@ if __name__ == '__main__':
     
     # subtract b from g channel
     sub_rgb = (g-b)/(r+g+b)
-    # sub_rgb = (sub_rgb-np.min(sub_rgb))/(np.max(sub_rgb)-np.min(sub_rgb))
     thresh = threshold_li(sub_rgb)
-    # print(thresh)
     binary_rgb = sub_rgb < thresh
-    binary_rgb = remove_small_objects(binary_rgb, 1000).astype(np.int64)
     
     # opening
     selem = disk(7)
@@ -44,13 +46,29 @@ if __name__ == '__main__':
     for region in regionprops(labels):
         area.append(region.area)
     mid = np.median(np.array(area))
+    
+    # only use watershed algorithm when the input image is not quite dense
+    if dense:
+        distance = ndi.distance_transform_edt(eroded)
+        local_max_coords = peak_local_max(distance, min_distance=40,exclude_border=0)
+        local_max_mask = np.zeros(distance.shape, dtype=bool)
+        local_max_mask[tuple(local_max_coords.T)] = True
+        markers = label(local_max_mask)
+        labels = watershed(-distance, markers, mask=eroded,watershed_line=True)
+
+        #only do watershed on large size cells
+        large = remove_small_objects(eroded.astype(bool), 2*mid).astype(np.int64)
+        final = label(eroded)
+        final[large>0] = labels[large>0]
+        final = label(final)
+        final = remove_small_objects(final, 1000).astype(np.int64)
 
 
     points = [] 
     colors = []
     bboxes = []
     i=0
-    for region in regionprops(labels):
+    for region in regionprops(final):
         y,x = region.centroid
         if region.area >= 2*mid:       
             #bound
