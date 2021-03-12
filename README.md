@@ -21,7 +21,10 @@ To run the cell counter, user could easily input following code in terminal. You
 * -dense: Whether the cells are dense or not in the input image, default True. If True, watershed algorithm will be applied.
 
 ```
-python viewer.py --image images/8.tif --dense False 
+python viewer.py --image images/example_input.tif --dense False 
 ```
 
+**example output**:
+
+![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/example_result.png)
 
