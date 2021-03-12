@@ -2,15 +2,8 @@ import napari
 import argparse
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-# %matplotlib qt 
-from scipy import ndimage as ndi
-from skimage.filters import threshold_li
-from skimage.measure import label, regionprops
-from skimage.color import label2rgb
-from skimage.morphology import disk, opening, remove_small_objects
-from skimage.segmentation import watershed
-from skimage.feature import peak_local_max
+from skimage.measure import regionprops,label
+from CellCounter import get_binary_map,apply_opening,find_median_cell_size,apply_watershed
 
 def str_to_bool(value):
     if isinstance(value, bool):
@@ -29,67 +22,36 @@ def get_args():
 
 if __name__ == '__main__':
     args = get_args()
-    dense = args.dense
-
-    img = plt.imread(args.image)  #clear: Boyden Chamber/CD345_LN229_Ctrl/8.tif
-    r = img[:,:,0].astype(np.int32)
-    g = img[:,:,1].astype(np.int32)
-    b = img[:,:,2].astype(np.int32)
-    print('Image size: ', b.shape)
     
-    # subtract b from g channel
-    sub_rgb = (g-b)/(r+g+b)
-    thresh = threshold_li(sub_rgb)
-    binary_rgb = sub_rgb < thresh
+    # image process
+    img = plt.imread(args.image)  
     
-    # opening
-    selem = disk(7)
-    eroded = opening(binary_rgb,selem)
-    eroded = remove_small_objects(eroded.astype(bool), 1000).astype(np.int64)
-    #plt.imshow(eroded)
-
-    #plot
-    final = label(eroded)
-    area = []
-    for region in regionprops(final):
-        area.append(region.area)
-    mid = np.median(np.array(area))
+    binary_img = get_binary_map(img)
+    final = label(apply_opening(binary_img))
+    median_size = find_median_cell_size(final)
+    if args.dense==True:
+        final = apply_watershed(final,median_size) 
     
-    # only use watershed algorithm when the input image is not quite dense
-    if dense==True:
-        print('Use watershed algorithm for dense images')
-        distance = ndi.distance_transform_edt(eroded)
-        local_max_coords = peak_local_max(distance, min_distance=40,exclude_border=0)
-        local_max_mask = np.zeros(distance.shape, dtype=bool)
-        local_max_mask[tuple(local_max_coords.T)] = True
-        markers = label(local_max_mask)
-        labels = watershed(-distance, markers, mask=eroded,watershed_line=True)
-
-        #only do watershed on large size cells
-        large = remove_small_objects(eroded.astype(bool), 2*mid).astype(np.int64)
-        final[large>0] = labels[large>0]
-        final = remove_small_objects(label(final), 1000).astype(np.int64)
-
-
+    # viewer
     points = [] 
     colors = []
     bboxes = []
     i=0
     for region in regionprops(final):
         y,x = region.centroid
-        if region.area >= 2*mid:       
+        if region.area >= 2*median_size:       
             #bound
             minr, minc, maxr, maxc = region.bbox
             bbox_rect = np.array([[minr, minc], [maxr, minc], [maxr, maxc], [minr, maxc]])
             colors.append('green') #0.1)
             bboxes.append(bbox_rect)
         
-        elif region.area < mid/2:
-            colors.append('red') #0.5)
+        elif region.area < median_size/2:
+            colors.append('red')
         else:
-            colors.append('green') #0.1)
+            colors.append('green')
 
-        points.append([y,x]) #or [x,y]?
+        points.append([y,x])
 
     points=np.array(points)
     point_properties={
