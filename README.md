@@ -1,7 +1,7 @@
 # Automatic Cell Counter
 
 ## What is this?
-This repository provides an automatic cell counter algorithm to count cell numbers.
+This repository provides an automatic cell counter algorithm to count cell numbers and offers a user interface for further manual correction.
 
 ## Installation:
 To install the necessary packages for this framework run:
