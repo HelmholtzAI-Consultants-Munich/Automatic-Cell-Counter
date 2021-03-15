@@ -91,14 +91,14 @@ if __name__ == '__main__':
                                         name='points')
 
             @viewer.bind_key('d') # denote done
-            def print_names(viewer):
+            def update_cell_numbers(viewer):
                 num_cells = viewer.layers['points'].data.shape[0]
                 print('Number of cells after manual correction: ', num_cells)
                 result[-1].append(num_cells)
                 viewer.close()
     
-        if len(result[-1]) == 2:
-            result[-1].append(None)
+#         if len(result[-1]) == 2:
+#             result[-1].append(None)
             
     df = pd.DataFrame(result, columns =['Name', 'Automatic Cell Number','Corrected Cell Number']) 
     df.to_excel('result.xlsx')
