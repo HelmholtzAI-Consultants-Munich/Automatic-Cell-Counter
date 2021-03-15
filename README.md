@@ -29,11 +29,10 @@ python viewer.py --image example_data/
 
 **example output**:
 
-![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/example_result.png)
+![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/example_result.png)
 
 <p float="left">
-  <img src="/img1.png" width="100" />
-  <img src="/img2.png" width="100" /> 
-  <img src="/img3.png" width="100" />
+  <img src="https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/Terminal_output.png" width="100" />
+  <img src="https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/Excel_output.png" width="100" /> 
 </p>
 
