@@ -17,11 +17,14 @@ To run the cell counter, user could easily input following code in terminal. You
 
 **Require arguments**:
 
-* -image: The path of the input image.
-* -dense: Whether the cells are dense or not in the input image, default True. If True, watershed algorithm will be applied.
+* -image: The path of the input image or the path of a directory.
 
 ```
-python viewer.py --image images/example_input.tif --dense False 
+python viewer.py --image images/example_input.tif
+```
+or
+```
+python viewer.py --image images/
 ```
 
 **example output**:

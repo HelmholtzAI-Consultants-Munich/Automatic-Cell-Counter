@@ -95,7 +95,7 @@ if __name__ == '__main__':
                 num_cells = viewer.layers['points'].data.shape[0]
                 print('Number of cells after manual correction: ', num_cells)
                 result[-1].append(num_cells)
-#                 viewer.close()
+                viewer.close()
     
         if len(result[-1]) == 2:
             result[-1].append(None)
