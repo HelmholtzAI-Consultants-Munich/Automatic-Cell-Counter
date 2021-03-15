@@ -20,14 +20,20 @@ To run the cell counter, user could easily input following code in terminal. You
 * -image: The path of the input image or the path of a directory.
 
 ```
-python viewer.py --image images/example_input.tif
+python viewer.py --image example_data/8.tif
 ```
 or
 ```
-python viewer.py --image images/
+python viewer.py --image example_data/
 ```
 
 **example output**:
 
-![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/example_result.png)
+![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/example_result.png)
+
+<p float="left">
+  <img src="/img1.png" width="100" />
+  <img src="/img2.png" width="100" /> 
+  <img src="/img3.png" width="100" />
+</p>
 

@@ -102,3 +102,4 @@ if __name__ == '__main__':
             
     df = pd.DataFrame(result, columns =['Name', 'Automatic Cell Number','Corrected Cell Number']) 
     df.to_excel('result.xlsx')
+    print('Done! All results are saved in result.xlsx!')
