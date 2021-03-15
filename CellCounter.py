@@ -24,7 +24,6 @@ def get_binary_map(img):
     r = img[:,:,0].astype(np.int32)
     g = img[:,:,1].astype(np.int32)
     b = img[:,:,2].astype(np.int32)
-    print('Image size: ', b.shape)
     
     # subtract b from g channel
     sub_rgb = (g-b)/(r+g+b)
