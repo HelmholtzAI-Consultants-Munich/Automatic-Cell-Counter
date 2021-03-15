@@ -97,8 +97,8 @@ if __name__ == '__main__':
                 result[-1].append(num_cells)
                 viewer.close()
     
-#         if len(result[-1]) == 2:
-#             result[-1].append(None)
+        if len(result[-1]) == 2:
+            result[-1].append(None)
             
     df = pd.DataFrame(result, columns =['Name', 'Automatic Cell Number','Corrected Cell Number']) 
     df.to_excel('result.xlsx')
