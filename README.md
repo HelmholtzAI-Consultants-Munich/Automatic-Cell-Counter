@@ -14,6 +14,7 @@ If you are using conda first install pip by: ```conda install pip```
 ## Usage:
 
 To run the cell counter, user could easily input following code in the terminal.
+
 **Require arguments**:
 
 * -image: The path of the input image or the path of the directory.
