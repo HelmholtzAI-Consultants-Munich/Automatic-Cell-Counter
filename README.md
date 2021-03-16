@@ -4,7 +4,7 @@
 This repository provides an automatic cell counter algorithm to count cell numbers and offers a user interface for further manual correction.
 
 ## Installation:
-To install the necessary packages for this framework run:
+This algorithm has been implemented using **Python 3.7**. To install the necessary packages for this framework run:
 ```
 pip install -r requirements.txt
 ```
