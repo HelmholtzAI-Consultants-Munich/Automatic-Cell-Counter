@@ -50,4 +50,4 @@ The target images for this reporsitory are taken from Boyden Chamber assay under
 
 ## Methods:
 
-![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/method.png)
+![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/methods.png)
