@@ -1,7 +1,7 @@
 # Automatic Cell Counter
 
 ## What is this?
-This repository provides an automatic cell counter algorithm to count cell numbers and offers a user interface for further manual correction.
+This repository provides an automatic cell counter algorithm to count cell numbers in Boyden Chamber assay and offers a user interface for further manual correction.
 
 ## Installation:
 This algorithm has been implemented using **Python 3.7**. To install the necessary packages for this framework run:
@@ -41,4 +41,7 @@ Example output on the terminal (left) and in the excel (right):
   <img src="https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/Terminal_output.png" width="350" />
   <img src="https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/Excel_output.png" width="350" /> 
 </p>
+
+
+## Data
 
