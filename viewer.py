@@ -27,6 +27,9 @@ if __name__ == '__main__':
     if os.path.isdir(args.image):
         listOfFiles = list()
         for (dirpath, dirnames, filenames) in os.walk(args.image):
+            filenames = [f for f in filenames if not f[0] == '.']
+            dirnames[:] = [d for d in dirnames if not d[0] == '.']
+            print(dirpath)
             filenames.sort()#key=lambda x: int(x.split(".")[0]))
             listOfFiles += [os.path.join(dirpath, file) for file in filenames]
     else:
