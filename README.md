@@ -29,6 +29,8 @@ or
 python viewer.py --image example_data/
 ```
 
+**Here is a tutorial to set up your Automatic Cell Counter for Windows**: <https://docs.google.com/document/d/16k9-ZvtQJ8us9aNeMwYkpQ41bWL5bFFZ6FMpxviggb4/edit?userstoinvite=christina.bukas@gmail.com&ts=60adfe68&actionButton=1>
+
 **Example output**:
 
 The user interface will be built based on every input image for manual correction. Inside each image, red dots are used to denote the centers of detected cells. We also used green dots and red bounding boxes to guide users to pay more attention to those easy-to-make-mistake areas: green dots (detected cells are quite small, perhaps one cell is divided to several parts) and red bounding box (high density areas, perhaps two cells are merged). User could add dots or delete dots manually based on the automatically detected results. 
