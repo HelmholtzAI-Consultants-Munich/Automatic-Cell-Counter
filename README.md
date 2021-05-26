@@ -3,6 +3,8 @@
 ## What is this?
 This repository provides an automatic cell counter algorithm to count cell numbers in 2D microscopic images from Boyden Chamber assay and offers a user interface for further manual correction.
 
+**Please star this repository if you like it :)**
+
 ## Installation:
 This algorithm has been implemented using **Python 3.7**. To install the necessary packages for this framework run:
 ```
