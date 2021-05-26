@@ -29,7 +29,7 @@ or
 python viewer.py --image example_data/
 ```
 
-**Here is a tutorial to set up your Automatic Cell Counter for Windows**: [Tutorial](../Python tutorial for Windows.pdf)
+**Here is a tutorial to set up your Automatic Cell Counter for Windows**: [Tutorial](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/Python%20tutorial%20for%20Windows.pdf)
 
 **Example output**:
 
