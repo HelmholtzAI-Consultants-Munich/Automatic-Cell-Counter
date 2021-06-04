@@ -1,7 +1,8 @@
 # Automatic Cell Counter
 
 ## What is this?
-This repository provides an automatic cell counter algorithm to count cell numbers in 2D microscopic images from Boyden Chamber assay and offers a user interface for further manual correction.
+This repository provides an automatic cell counter algorithm to count cell numbers in 2D microscopic images from Boyden Chamber assay and offers a user interface for further manual correction. 
+
 
 **Please star this repository if you like it :)**
 
@@ -52,8 +53,10 @@ Example output on the terminal (left) and in the excel (right):
 <img align="right" src="https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/Boyden%20Chamber%20Assay.png">
 The target images for this reporsitory are taken from Boyden Chamber assay under the microscope – Brightfield, 20x. The assay is based on a chamber of two medium-filled compartments separated by a microporous membrane. The cells are placed on the top of the chamber and are allowed to migrate/invade through the pores of the membrane into the lower compartment. After a certain time, the cells are fixed and stained with 0.05% Crystal Violet – and the number of cells into the lower compartment are counted to determine the migratory or invading capacity of the cells. 
 
+The parameters of this algorithm are determined for image with size of 1550 * 2088. If your images are much smaller or larger than this size, please adjust the parameters.
+
 ### Example images:
-![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/example_image.png)
+![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/example_images.png)
 
 ## Methods:
 
