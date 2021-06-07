@@ -60,5 +60,5 @@ The parameters of this algorithm are determined for image with size of 1550 * 20
 
 ## Methods:
 
-![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/method.png)
+![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/methods.png)
 
