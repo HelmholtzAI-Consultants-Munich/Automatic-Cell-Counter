@@ -1,7 +1,7 @@
 # Automatic Cell Counter
 
 ## What is this?
-This repository provides an automatic cell counter algorithm to count cell numbers in 2D microscopic images from Boyden Chamber assay and offers a user interface for further manual correction. 
+This repository provides an automatic cell counter algorithm to count cell numbers in 2D microscopy images from Boyden Chamber assay and offers a user interface for further manual correction. 
 
 
 **Please star this repository if you like it :)**
@@ -16,7 +16,7 @@ If you are using conda first install pip by: ```conda install pip```
 
 ## Usage:
 
-To run the cell counter, user could easily input following code in the terminal.
+To run the cell counter, the user can easily input the following code in the terminal.
 
 **Require arguments**:
 
@@ -34,9 +34,9 @@ python viewer.py --image example_data/
 
 **Example output**:
 
-The user interface will be built based on every input image for manual correction. Inside each image, red dots are used to denote the centers of detected cells. We also used green dots and red bounding boxes to guide users to pay more attention to those easy-to-make-mistake areas: green dots (detected cells are quite small, perhaps one cell is divided to several parts) and red bounding box (high density areas, perhaps two cells are merged). User could add dots or delete dots manually based on the automatically detected results. 
+The user interface will be built based on every input image for manual correction. Inside each image, red dots are used to denote the centers of the detected cells. We also used green dots and red bounding boxes to guide users to pay more attention to those easy-to-make-mistake areas: green dots (detected cells are quite small, perhaps one cell is divided to several parts) and red bounding box (high density areas, perhaps two cells are merged). The user may add dots or delete dots manually based on the automatically detected results. 
 
-After manual correction, **press 'd' (denotes Done) key on the keyboard to print the updated cell numbers on the terminal and close the current window.** When all images are corrected, an excel file called **result** will be generated and contain both automatically detected cell numbers and corrected cell numbers.
+After manual correction, **press the 'd' (denotes Done) key on the keyboard to print the updated cell numbers on the terminal and close the current window.** When all images are corrected, an excel file named **result** will be generated which contains both automatically detected cell numbers and corrected cell numbers.
 
 User interface for manual correction:
 ![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/example_result.png)
