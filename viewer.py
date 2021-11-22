@@ -75,27 +75,29 @@ if __name__ == '__main__':
         print('Number of cells detected with automatic method: ', len(points))
         result.append([image,len(points)])
 
-        with napari.gui_qt():
-            viewer = napari.view_image(img, name='image')
-            if len(bboxes)>0:
-                shapes_layer = viewer.add_shapes(bboxes,
-                                        face_color='transparent',
-                                        edge_color='magenta',
-                                        name='bounding box',
-                                        edge_width=5)
-            if len(points)>0:
-                points_layer = viewer.add_points(points,
-                                        properties=point_properties,
-                                        face_color='point_colors',
-                                        size=20,
-                                        name='points')
+        #with napari.gui_qt():
+        viewer = napari.view_image(img, name='image')
+        if len(bboxes)>0:
+            shapes_layer = viewer.add_shapes(bboxes,
+                                    face_color='transparent',
+                                    edge_color='magenta',
+                                    name='bounding box',
+                                    edge_width=5)
+        if len(points)>0:
+            points_layer = viewer.add_points(points,
+                                    properties=point_properties,
+                                    face_color='point_colors',
+                                    size=20,
+                                    name='points')
 
-            @viewer.bind_key('d') # denote done
-            def update_cell_numbers(viewer):
-                num_cells = viewer.layers['points'].data.shape[0]
-                print('Number of cells after manual correction: ', num_cells)
-                result[-1].append(num_cells)
-                viewer.close()
+        @viewer.bind_key('d') # denote done
+        def update_cell_numbers(viewer):
+            num_cells = viewer.layers['points'].data.shape[0]
+            print('Number of cells after manual correction: ', num_cells)
+            result[-1].append(num_cells)
+            viewer.close()
+        
+        napari.run()
     
         if len(result[-1]) == 2:
             result[-1].append(None)
