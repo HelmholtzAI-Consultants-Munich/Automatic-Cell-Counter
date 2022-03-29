@@ -66,7 +66,7 @@ The parameters of this algorithm are determined for image with size of 1550 * 20
 
 
 ## How to cite:
-
+```
 @software{ruolin_shen_2022_6390980,
   author       = {Ruolin Shen and
                   Christina Bukas and
@@ -80,3 +80,4 @@ The parameters of this algorithm are determined for image with size of 1550 * 20
   doi          = {10.5281/zenodo.6390980},
   url          = {https://doi.org/10.5281/zenodo.6390980}
 }
+```
