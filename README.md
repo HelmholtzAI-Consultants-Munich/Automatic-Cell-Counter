@@ -1,5 +1,7 @@
 # Automatic Cell Counter
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6390980.svg)](https://doi.org/10.5281/zenodo.6390980)
+
 ## What is this?
 This repository provides an automatic cell counter algorithm to count cell numbers in 2D microscopy images from Boyden Chamber assay and offers a user interface for further manual correction. 
 
@@ -62,3 +64,19 @@ The parameters of this algorithm are determined for image with size of 1550 * 20
 
 ![image](https://github.com/HelmholtzAI-Consultants-Munich/Automatic-Cell-Counter/blob/master/images/methods.png)
 
+
+## How to cite:
+
+@software{ruolin_shen_2022_6390980,
+  author       = {Ruolin Shen and
+                  Christina Bukas and
+                  Marie Piraud},
+  title        = {{HelmholtzAI-Consultants-Munich/Automatic-Cell- 
+                   Counter: First version of the software}},
+  month        = mar,
+  year         = 2022,
+  publisher    = {Zenodo},
+  version      = {v1.0.0},
+  doi          = {10.5281/zenodo.6390980},
+  url          = {https://doi.org/10.5281/zenodo.6390980}
+}
