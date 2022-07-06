@@ -3,7 +3,7 @@ import napari
 import argparse
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+from skimage.io import imread
 from skimage.measure import regionprops,label
 from CellCounter import get_binary_map,apply_opening,find_median_cell_size,apply_watershed
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     result = []
     # image process
     for image in listOfFiles:
-        img = plt.imread(image)  
+        img = imread(image)  
 
         binary_img = get_binary_map(img)
         final = label(apply_opening(binary_img))
