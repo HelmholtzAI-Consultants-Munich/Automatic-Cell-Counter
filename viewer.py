@@ -6,15 +6,8 @@ import pandas as pd
 from skimage.io import imread
 from skimage.measure import regionprops,label
 from CellCounter import get_binary_map,apply_opening,find_median_cell_size,apply_watershed
-
-# def str_to_bool(value):
-#     if isinstance(value, bool):
-#         return value
-#     if value.lower() in {'false', 'f', '0', 'no', 'n'}:
-#         return False
-#     elif value.lower() in {'true', 't', '1', 'yes', 'y'}:
-#         return True
-#     raise ValueError(f'{value} is not a valid boolean value')
+import warnings
+warnings.filterwarnings("ignore")
 
 def get_args():
     parser = argparse.ArgumentParser(description='Automatic cell counter')
@@ -59,20 +52,17 @@ if __name__ == '__main__':
                 #bound
                 minr, minc, maxr, maxc = region.bbox
                 bbox_rect = np.array([[minr, minc], [maxr, minc], [maxr, maxc], [minr, maxc]])
-                colors.append('green') #0.1)
+                colors.append('lime')#'green') #0.1)
                 bboxes.append(bbox_rect)
 
             elif region.area < median_size/2:
-                colors.append('red')
+                colors.append('magenta')
             else:
-                colors.append('green')
+                colors.append('lime')
 
             points.append([y,x])
 
         points=np.array(points)
-        point_properties={
-            'point_colors': np.array(colors)
-        }
         bboxes = np.array(bboxes)
         print('Image name: ',image)
         print('Number of cells detected with automatic method: ', len(points))
@@ -88,8 +78,7 @@ if __name__ == '__main__':
                                     edge_width=5)
         if len(points)>0:
             points_layer = viewer.add_points(points,
-                                    properties=point_properties,
-                                    face_color='point_colors',
+                                    face_color=colors,
                                     size=20,
                                     name='points')
 
