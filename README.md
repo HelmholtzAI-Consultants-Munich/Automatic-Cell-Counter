@@ -9,7 +9,7 @@ This repository provides an automatic cell counter algorithm to count cell numbe
 **Please star this repository if you like it :)**
 
 ## Installation:
-This algorithm has been implemented using **Python 3.7**. To install the necessary packages for this framework run:
+This algorithm has been implemented using **Python 3.9**. To install the necessary packages for this framework run:
 ```
 pip install -r requirements.txt
 ```
