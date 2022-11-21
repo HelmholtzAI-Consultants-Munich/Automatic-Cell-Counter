@@ -1,6 +1,7 @@
 # Automatic Cell Counter
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6390980.svg)](https://doi.org/10.5281/zenodo.6390980)
+![stability-stable](https://img.shields.io/badge/stability-stable-green.svg) 
 
 ## What is this?
 This repository provides an automatic cell counter algorithm to count cell numbers in 2D microscopy images from Boyden Chamber assay and offers a user interface for further manual correction. 
